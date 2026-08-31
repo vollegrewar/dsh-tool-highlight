@@ -2,6 +2,10 @@
   "name": "dsh-tool-highlight",
   "version": "0.1.0",
   "description": "DeepSeek Harness web 插件：给 bash/pwsh 命令与 read 的代码输出做分层语法染色（认得出来才染，表格/日志保持原样），自带 VS Code Dark+ 风格配色，跟随主题。",
+  "keywords": [
+    "deepseek-harness", "dsh", "dsh-plugin", "syntax-highlighting",
+    "web-ui", "tool-output", "highlighter"
+  ],
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -27,9 +31,13 @@
     "cordis.patch.yml",
     "dsh.plugin.json",
     "README.md",
+    "README.en.md",
     "LICENSE"
   ],
   "license": "MIT",
+  "scripts": {
+    "test": "node test/tokenizer.test.mjs"
+  },
   "engines": {
     "node": ">=20"
   },
