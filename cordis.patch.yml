@@ -1,0 +1,7 @@
+# dsh-tool-highlight bundle patch
+#
+# 安装后（dependencies + dsh.profile.bundles 均含 dsh-tool-highlight），
+# 启动时 profile boot 合并本 patch，把插件行插入 host composition。
+- insert:
+    - id: dsh-tool-highlight
+      name: 'dsh-tool-highlight'

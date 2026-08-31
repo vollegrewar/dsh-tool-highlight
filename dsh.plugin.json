@@ -1,0 +1,12 @@
+{
+  "name": "dsh-tool-highlight",
+  "description": "bash/pwsh 命令与 read 代码输出的分层语法染色（VS Code Dark+ 配色，认得出来才染）",
+  "version": "0.1.0",
+  "entry": {
+    "name": "dsh-tool-highlight",
+    "inject": []
+  },
+  "client": {
+    "platform": "web"
+  }
+}
