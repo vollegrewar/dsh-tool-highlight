@@ -30,3 +30,13 @@ dsh plugin --profile web add link:/path/to/dsh-tool-highlight
 - Bump `version` in `package.json` and `dsh.plugin.json`
 - Add a line to `CHANGELOG.md`
 - `node test/tokenizer.test.mjs` passes
+
+## Publishing to npm (maintainer)
+
+```bash
+# one-time login (official registry; your machine may default to a mirror)
+npm login --registry=https://registry.npmjs.org
+
+# publish
+npm publish --registry=https://registry.npmjs.org
+```
