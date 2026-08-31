@@ -1,6 +1,7 @@
 # dsh-tool-highlight
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![npm version](https://img.shields.io/npm/v/dsh-tool-highlight)](https://www.npmjs.com/package/dsh-tool-highlight)
 [![GitHub stars](https://img.shields.io/github/stars/vollegrewar/dsh-tool-highlight)](https://github.com/vollegrewar/dsh-tool-highlight)
 
 > DeepSeek Harness（DSH）web 插件：给 **bash / pwsh 命令**与 **read 的代码输出**做**分层语法染色**（VS Code Dark+ 风格：关键字/字符串/数字/函数名/注释各一色）。**认得出来才染，表格/日志保持原样。**
