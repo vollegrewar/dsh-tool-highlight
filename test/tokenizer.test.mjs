@@ -12,7 +12,7 @@ if (!m) throw new Error("cannot extract factory");
 const body = m[1].replace(/\n\s*return module\.exports;\s*$/, "");
 const fn = new Function(
   "exports", "module", "require", "window", "document", "React", "e",
-  body + "\nexports.__test = { colorizeCode, colorizeJson, detectKind, EXT_LANG };" +
+  body + "\nexports.__test = { colorizeCode, colorizeJson, detectKind, EXT_LANG, defaultOpenFor };" +
     "\nreturn module.exports;"
 );
 const fakeWindow = { setInterval: () => 0, clearInterval: () => {}, setTimeout: () => 0, clearTimeout: () => {} };
@@ -56,6 +56,15 @@ const strKwd = T.colorizeCode('x = "print"');
 check("edge: keyword inside string stays string", !hasCls(strKwd, "th-kwd") && hasCls(strKwd, "th-str"));
 const num = T.colorizeCode("n = 42 + 1.5");
 check("edge: integer and float", hasCls(num, "th-num") && num.filter((t) => t.cls === "th-num").length >= 2);
+
+// 6. 默认折叠决策：running/出错强制展开；其余跟随 collapseByDefault
+const d = T.defaultOpenFor;
+check("collapse: on + settled ok -> collapsed", d(true, false, false) === false);
+check("collapse: on + running -> open", d(true, true, false) === true);
+check("collapse: on + error -> open", d(true, false, true) === true);
+check("collapse: off + settled ok -> open (legacy)", d(false, false, false) === true);
+check("collapse: off + running -> open", d(false, true, false) === true);
+check("collapse: off + error -> open", d(false, false, true) === true);
 
 if (failed > 0) { console.log(`\n[FAIL] ${failed} test(s) failed`); process.exit(1); }
 console.log("\n[OK] all tokenizer tests passed");

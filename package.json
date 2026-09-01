@@ -1,7 +1,7 @@
 {
   "name": "dsh-tool-highlight",
-  "version": "0.1.1",
-  "description": "DeepSeek Harness web 插件：给 bash/pwsh 命令与 read 的代码输出做分层语法染色（认得出来才染，表格/日志保持原样），自带 VS Code Dark+ 风格配色，跟随主题。",
+  "version": "0.2.0",
+  "description": "DeepSeek Harness web 插件：给 bash/pwsh 命令与 read 的代码输出做分层语法染色（认得出来才染，表格/日志保持原样），自带 VS Code Dark+ 风格配色，跟随主题；read / bash / pwsh 卡片支持可开关的默认折叠。",
   "keywords": [
     "deepseek-harness",
     "dsh",
@@ -24,9 +24,12 @@
     },
     "client": {
       "platform": "web",
+      "immediately": true,
       "inject": [
         "@deepseek-ai/dsh-client-runtime",
-        "@deepseek-ai/dsh-client-ui-slots"
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-settings-plugins"
       ]
     }
   },
@@ -41,7 +44,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "test": "node test/tokenizer.test.mjs"
+    "test": "node test/tokenizer.test.mjs",
+    "prepublishOnly": "npm test"
   },
   "engines": {
     "node": ">=20"
@@ -49,6 +53,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vollegrewar/dsh-tool-highlight.git"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": ">=0.1.0-rc.1"
   },
   "peerDependencies": {
     "react": "^18.2.0"

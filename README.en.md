@@ -9,6 +9,20 @@ Pure frontend rendering — it **never adds or rewrites any session content and 
 - **`read` on code files** → language detected from the extension (`.py .js .ts .json .ps1 .sh ...`), PyCharm-style token coloring
 - **bash / pwsh output** → content heuristic: JSON gets key/string/number coloring; code-looking output gets syntax coloring; **tables / logs stay plain** (forced coloring on a receipt looks like a mess)
 - Exit-code chip (green = success / red = non-zero exit or signal)
+- **Collapsible cards (toggleable)**: `read` / `bash` / `pwsh` cards collapse to a one-line header (path + status chip) by default — click the header to expand/collapse; running and failed cards auto-expand so live output and errors are never hidden. Turn the default-collapse off in Settings → Plugin settings → **工具卡片折叠** to restore the previous always-expanded rendering.
+
+## Configuration
+
+| Key | Type | Default | Description |
+| --- | --- | --- | --- |
+| `collapseByDefault` | `boolean` | `true` | render `read` / `bash` / `pwsh` cards collapsed by default; set `false` to always expand. |
+
+UI: Settings → Plugin settings → **工具卡片折叠** (applies immediately, persisted to the user settings document). You can also write it directly in the profile's `cordis.yml` / `settings.yaml`:
+
+```yaml
+tool-highlight:
+  collapseByDefault: true
+```
 
 ## Install
 
