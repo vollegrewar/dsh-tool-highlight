@@ -12,7 +12,7 @@ if (!m) throw new Error("cannot extract factory");
 const body = m[1].replace(/\n\s*return module\.exports;\s*$/, "");
 const fn = new Function(
   "exports", "module", "require", "window", "document", "React", "e",
-  body + "\nexports.__test = { colorizeCode, colorizeJson, detectKind, EXT_LANG, defaultOpenFor };" +
+  body + "\nexports.__test = { colorizeCode, colorizeJson, detectKind, EXT_LANG, defaultOpenFor, sanitizeLines };" +
     "\nreturn module.exports;"
 );
 const fakeWindow = { setInterval: () => 0, clearInterval: () => {}, setTimeout: () => 0, clearTimeout: () => {} };
@@ -65,6 +65,14 @@ check("collapse: on + error -> open", d(true, false, true) === true);
 check("collapse: off + settled ok -> open (legacy)", d(false, false, false) === true);
 check("collapse: off + running -> open", d(false, true, false) === true);
 check("collapse: off + error -> open", d(false, false, true) === true);
+
+// 7. 敌意数据规整：rv.lines 的任何异常条目都不能让渲染抛错
+const sl = T.sanitizeLines;
+const s1 = sl([null, undefined, "plain", { number: 10, text: "ok" }]);
+check("sanitize: non-array -> []", T.sanitizeLines("x").length === 0);
+check("sanitize: null/undefined get empty text + index number", s1[0].text === "" && s1[0].number === 1 && s1[1].text === "" && s1[1].number === 2);
+check("sanitize: string entry kept as text", s1[2].text === "plain" && s1[2].number === 3);
+check("sanitize: keeps explicit number/text", s1[3].number === 10 && s1[3].text === "ok");
 
 if (failed > 0) { console.log(`\n[FAIL] ${failed} test(s) failed`); process.exit(1); }
 console.log("\n[OK] all tokenizer tests passed");

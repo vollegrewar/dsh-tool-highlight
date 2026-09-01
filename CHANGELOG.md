@@ -2,6 +2,21 @@
 
 All notable changes to dsh-tool-highlight.
 
+## [0.2.3] — 2026-09-01
+
+- Fix: card-render crash hardening. `read` line projections (`rv.lines`) are
+  now sanitized — null/odd entries previously could throw `TypeError` on
+  `ln.text` / `ln.number` and take the whole tool card down with an error
+  boundary.
+- Fix: `apply()` registers the tool-view slots first; the settings
+  scope/card are now optional with graceful degradation (defaults apply) —
+  a missing/broken `settingsScope` can no longer kill tool rendering.
+- Fix: the detail body build is wrapped — any unexpected data shape renders a
+  `（渲染失败：<原因>）` fallback instead of crashing the card, and the
+  settings row guards a missing snapshot/action with defaults.
+- Tests: add `sanitizeLines` cases (null/string/missing-number entries).
+- Bump `package.json` / `dsh.plugin.json` to 0.2.3.
+
 ## [0.2.2] — 2026-09-01
 
 - Fix: the settings card title (and label/hint/status text) was light gray —
