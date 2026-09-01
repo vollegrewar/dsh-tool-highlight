@@ -2,6 +2,26 @@
 
 All notable changes to dsh-tool-highlight.
 
+## [0.2.6] — 2026-09-01
+
+- Style: theme adaptation — card text raised to near-pure-white (`#e6edf3`/
+  `#f0f6fc`) for contrast; in DSH dark mode (`body[data-ds-dark-theme]`) the
+  card surface brightens one step (`#161b22` → `#1c2126`, page is `#0f1115`)
+  so the card no longer blends into the chat background.
+- Bump `package.json` / `dsh.plugin.json` to 0.2.6.
+
+## [0.2.5] — 2026-09-01
+
+- Style: code font size bumped to 14px (GitHub mono stack kept).
+- Bump `package.json` / `dsh.plugin.json` to 0.2.5.
+
+## [0.2.4] — 2026-09-01
+
+- Style: code inside cards now uses the GitHub mono stack
+  (`ui-monospace → SF Mono → Menlo → Consolas → Liberation Mono`, CJK-safe
+  `Microsoft YaHei` fallback) at 12px/1.5, matching GitHub code blocks.
+- Bump `package.json` / `dsh.plugin.json` to 0.2.4.
+
 ## [0.2.3] — 2026-09-01
 
 - Fix: card-render crash hardening. `read` line projections (`rv.lines`) are

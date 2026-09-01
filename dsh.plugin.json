@@ -1,7 +1,7 @@
 {
   "name": "dsh-tool-highlight",
   "description": "bash/pwsh 命令与 read 代码输出的分层语法染色（VS Code Dark+ 配色，认得出来才染，表格/日志保持原样，零 token 开销）；read / bash / pwsh 卡片默认折叠可开关（设置 → 插件配置 → 工具卡片折叠）",
-  "version": "0.2.3",
+  "version": "0.2.6",
   "entry": {
     "name": "dsh-tool-highlight",
     "inject": []
