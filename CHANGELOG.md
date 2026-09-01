@@ -2,6 +2,16 @@
 
 All notable changes to dsh-tool-highlight.
 
+## [0.2.2] — 2026-09-01
+
+- Fix: the settings card title (and label/hint/status text) was light gray —
+  it referenced `--dsw-alias-foreground`, which is NOT a DSH theme token, so
+  every color fell back to the dark-theme gray. Switch to the real aliases
+  `--dsw-alias-label-primary` (title/label, near-black in light themes) and
+  `--dsw-alias-label-secondary` (hint/status); the switch track uses
+  `--dsw-alias-border-l2`.
+- Bump `package.json` / `dsh.plugin.json` to 0.2.2.
+
 ## [0.2.1] — 2026-09-01
 
 - Fix: host settings registration now uses the current dsh-settings API
